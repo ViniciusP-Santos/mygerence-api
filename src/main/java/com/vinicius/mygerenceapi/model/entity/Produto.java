@@ -1,13 +1,19 @@
-package com.vinicius.mygerenceapi.model;
+package com.vinicius.mygerenceapi.model.entity;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Produto {
+@Entity
+public class Produto implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private String marca;
     private String conteudo;
-
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
     public Produto(){
