@@ -1,6 +1,6 @@
 package com.vinicius.mygerenceapi.config;
 
-import com.vinicius.mygerenceapi.service.DBServices;
+import com.vinicius.mygerenceapi.model.service.DBServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

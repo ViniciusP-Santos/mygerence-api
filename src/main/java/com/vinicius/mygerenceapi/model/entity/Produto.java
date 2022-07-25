@@ -1,5 +1,7 @@
 package com.vinicius.mygerenceapi.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,6 +14,8 @@ public class Produto implements Serializable {
     private String nome;
     private String marca;
     private String conteudo;
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
