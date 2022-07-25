@@ -6,7 +6,9 @@ import com.vinicius.mygerenceapi.model.dao.impl.ProdutoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,5 +49,12 @@ public class ProdutoController {
     public ResponseEntity<Produto> updatePatch(@PathVariable Integer id, @RequestBody Produto obj){
         Produto newObj = service.update(id, obj);
         return ResponseEntity.ok().body(newObj);
+    }
+
+    @PostMapping
+    public ResponseEntity<Produto> create(@RequestParam(value = "categoria", defaultValue = "0") Integer id_cat, @RequestBody Produto obj){
+        Produto newObj = service.create(id_cat, obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/produtos/{id}").buildAndExpand(newObj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 }

@@ -17,6 +17,8 @@ public class ProdutoDAO {
     @Autowired
     private CategoriaDAO categoriaDAO;
 
+
+
     @Autowired
     private ProdutoRepository repository;
     public Produto findById(Integer id){
@@ -43,5 +45,14 @@ public class ProdutoDAO {
         newObj.setNome(obj.getNome());
         newObj.setConteudo(obj.getConteudo());
         newObj.setMarca(obj.getMarca());
+    }
+
+    public Produto create(Integer id_cat, Produto obj) {
+        obj.setId(null);
+        //Verificando se categoria existe na base de dados
+        Categoria cat = categoriaDAO.findById(id_cat);
+        //fazendo com que o obj conheça sua categoria
+        obj.setCategoria(cat);
+        return repository.save(obj);
     }
 }
