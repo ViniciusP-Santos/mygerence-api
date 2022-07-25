@@ -1,4 +1,4 @@
-package com.vinicius.mygerenceapi.resources.exception;
+package com.vinicius.mygerenceapi.controller.exception;
 
 import com.vinicius.mygerenceapi.model.service.exception.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.servlet.ServletRequest;
 
 @ControllerAdvice
-public class ResourceExceptionHandler {
+public class ControllerExceptionHandler {
 
     @ExceptionHandler(ObjectNotFoundException.class)
     public ResponseEntity<StandardError> objectNotFoundException(ObjectNotFoundException e, ServletRequest request){

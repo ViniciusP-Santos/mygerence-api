@@ -1,6 +1,7 @@
-package com.vinicius.mygerenceapi.resources;
+package com.vinicius.mygerenceapi.controller;
 
 
+import com.vinicius.mygerenceapi.model.dto.CategoriaDTO;
 import com.vinicius.mygerenceapi.model.entity.Categoria;
 import com.vinicius.mygerenceapi.model.service.CategoriaServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping(value = "/categorias")
-public class CategoriaResource {
+public class CategoriaController {
     @Autowired
     private CategoriaServices services;
 
@@ -22,6 +26,11 @@ public class CategoriaResource {
         Categoria obj = services.findById(id);
         return ResponseEntity.ok(obj);
     }
-}
 
-//localhost
+    @GetMapping
+    public ResponseEntity<List<CategoriaDTO>> findAll(){
+        List<Categoria> list = services.findAll();
+        List <CategoriaDTO> listDTO = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDTO);
+    }
+}

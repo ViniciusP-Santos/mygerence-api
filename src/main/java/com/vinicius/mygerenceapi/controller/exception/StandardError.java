@@ -1,4 +1,4 @@
-package com.vinicius.mygerenceapi.resources.exception;
+package com.vinicius.mygerenceapi.controller.exception;
 
 
 //Classe de Erros

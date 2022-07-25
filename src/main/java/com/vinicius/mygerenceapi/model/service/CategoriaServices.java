@@ -6,6 +6,7 @@ import com.vinicius.mygerenceapi.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,5 +20,9 @@ public class CategoriaServices {
 
         //Tratando a excessão, caso a categoria não exista
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! ID: "+ id + ", Tipo: "+Categoria.class.getName()));
+    }
+
+    public List<Categoria> findAll(){
+        return repository.findAll();
     }
 }
