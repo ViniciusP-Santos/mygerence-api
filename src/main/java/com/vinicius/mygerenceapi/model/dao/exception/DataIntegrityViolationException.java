@@ -1,4 +1,4 @@
-package com.vinicius.mygerenceapi.model.service.exception;
+package com.vinicius.mygerenceapi.model.dao.exception;
 
 public class DataIntegrityViolationException extends RuntimeException{
 

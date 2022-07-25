@@ -1,7 +1,7 @@
 package com.vinicius.mygerenceapi.controller.exception;
 
-import com.vinicius.mygerenceapi.model.service.exception.DataIntegrityViolationException;
-import com.vinicius.mygerenceapi.model.service.exception.ObjectNotFoundException;
+import com.vinicius.mygerenceapi.model.dao.exception.DataIntegrityViolationException;
+import com.vinicius.mygerenceapi.model.dao.exception.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,8 +1,8 @@
-package com.vinicius.mygerenceapi.model.service;
+package com.vinicius.mygerenceapi.model.dao.impl;
 
 import com.vinicius.mygerenceapi.model.dto.CategoriaDTO;
 import com.vinicius.mygerenceapi.model.entity.Categoria;
-import com.vinicius.mygerenceapi.model.service.exception.ObjectNotFoundException;
+import com.vinicius.mygerenceapi.model.dao.exception.ObjectNotFoundException;
 import com.vinicius.mygerenceapi.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CategoriaServices {
+public class CategoriaDAO {
 
     @Autowired
     private CategoriaRepository repository;
@@ -46,7 +46,7 @@ public class CategoriaServices {
         try {
             repository.deleteById(id);
         } catch (DataIntegrityViolationException e){
-            throw new com.vinicius.mygerenceapi.model.service.exception.DataIntegrityViolationException(
+            throw new com.vinicius.mygerenceapi.model.dao.exception.DataIntegrityViolationException(
                     "Categoria não pode ser deletada! Possui produtos associados.");
         }
     }

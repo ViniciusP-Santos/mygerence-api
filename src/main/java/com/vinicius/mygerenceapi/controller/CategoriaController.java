@@ -3,7 +3,7 @@ package com.vinicius.mygerenceapi.controller;
 
 import com.vinicius.mygerenceapi.model.dto.CategoriaDTO;
 import com.vinicius.mygerenceapi.model.entity.Categoria;
-import com.vinicius.mygerenceapi.model.service.CategoriaServices;
+import com.vinicius.mygerenceapi.model.dao.impl.CategoriaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/categorias")
 public class CategoriaController {
     @Autowired
-    private CategoriaServices services;
+    private CategoriaDAO services;
 
 
     @GetMapping(value="/{id}")

@@ -1,4 +1,4 @@
-package com.vinicius.mygerenceapi.model.service;
+package com.vinicius.mygerenceapi.model.dao;
 
 import com.vinicius.mygerenceapi.model.entity.Categoria;
 import com.vinicius.mygerenceapi.model.entity.Produto;
