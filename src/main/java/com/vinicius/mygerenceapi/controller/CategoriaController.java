@@ -6,11 +6,10 @@ import com.vinicius.mygerenceapi.model.entity.Categoria;
 import com.vinicius.mygerenceapi.model.service.CategoriaServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,5 +31,24 @@ public class CategoriaController {
         List<Categoria> list = services.findAll();
         List <CategoriaDTO> listDTO = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
+    }
+
+    @PostMapping
+    public ResponseEntity<Categoria> create(@RequestBody Categoria obj){
+        obj = services.create(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).body(obj);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<CategoriaDTO> update(@PathVariable Integer id, @RequestBody CategoriaDTO objDto){
+        Categoria newObj = services.update(id,objDto);
+        return ResponseEntity.ok().body(new CategoriaDTO(newObj));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id){
+        services.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
