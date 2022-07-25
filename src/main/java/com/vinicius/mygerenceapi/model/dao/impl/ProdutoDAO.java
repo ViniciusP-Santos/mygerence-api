@@ -5,6 +5,7 @@ import com.vinicius.mygerenceapi.model.entity.Produto;
 import com.vinicius.mygerenceapi.model.dao.exception.ObjectNotFoundException;
 import com.vinicius.mygerenceapi.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,5 +31,17 @@ public class ProdutoDAO {
         //Validando se essa categoria realmente existe na base de dados
         categoriaDAO.findById(id_cat);
         return repository.findAllByCategoria(id_cat);
+    }
+
+    public Produto update(Integer id, Produto obj) {
+        Produto newObj = findById(id);
+        updateData(newObj, obj);
+        return repository.save(newObj);
+    }
+
+    private void updateData(Produto newObj, Produto obj) {
+        newObj.setNome(obj.getNome());
+        newObj.setConteudo(obj.getConteudo());
+        newObj.setMarca(obj.getMarca());
     }
 }
