@@ -8,10 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/produtos")
 public class ProdutoController {
@@ -38,7 +40,7 @@ public class ProdutoController {
 
     //Metodo utilizado quando for atualizar varios dados de um Produto
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Produto> update(@PathVariable Integer id, @RequestBody Produto obj){
+    public ResponseEntity<Produto> update(@PathVariable Integer id, @Valid @RequestBody Produto obj){
         Produto newObj = service.update(id, obj);
         return ResponseEntity.ok().body(newObj);
     }
@@ -46,13 +48,13 @@ public class ProdutoController {
 
     //Metodo utilizado quando for atualizar somente um dado do Produto
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<Produto> updatePatch(@PathVariable Integer id, @RequestBody Produto obj){
+    public ResponseEntity<Produto> updatePatch(@PathVariable Integer id,@Valid @RequestBody Produto obj){
         Produto newObj = service.update(id, obj);
         return ResponseEntity.ok().body(newObj);
     }
 
     @PostMapping
-    public ResponseEntity<Produto> create(@RequestParam(value = "categoria", defaultValue = "0") Integer id_cat, @RequestBody Produto obj){
+    public ResponseEntity<Produto> create(@RequestParam(value = "categoria", defaultValue = "0") Integer id_cat, @Valid @RequestBody Produto obj){
         Produto newObj = service.create(id_cat, obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/produtos/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();

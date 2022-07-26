@@ -1,8 +1,10 @@
 package com.vinicius.mygerenceapi.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,8 +13,17 @@ public class Produto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotEmpty(message = "Campo NOME é requerido!")
+    @Length(min = 3, max = 50, message = "Campo NOME deve ter entre 3 e 100 caracteres")
     private String nome;
+
+    @NotEmpty(message = "Campo MARCA é requerido!")
+    @Length(min = 3, max = 50, message = "Campo MARCA deve ter entre 3 e 100 caracteres")
     private String marca;
+
+    @NotEmpty(message = "Campo CONTEUDO é requerido!")
+    @Length(min = 3, max = 50, message = "Campo CONTEUDO deve ter entre 3 e 100 caracteres")
     private String conteudo;
 
     @JsonIgnore
