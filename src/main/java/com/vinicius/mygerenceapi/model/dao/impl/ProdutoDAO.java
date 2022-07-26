@@ -55,4 +55,11 @@ public class ProdutoDAO {
         obj.setCategoria(cat);
         return repository.save(obj);
     }
+
+    public void delete(Integer id) {
+        //Verificando se o Produto existe
+        Produto obj = findById(id);
+
+        repository.delete(obj);
+    }
 }
