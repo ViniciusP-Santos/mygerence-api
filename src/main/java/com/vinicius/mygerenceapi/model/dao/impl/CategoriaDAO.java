@@ -21,7 +21,7 @@ public class CategoriaDAO {
         Optional<Categoria> obj = repository.findById(id);
 
         //Tratando a excessão, caso a categoria não exista
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! ID: "+ id + ", Tipo: "+Categoria.class.getName()));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! ID: Categoria"+ id + ", Tipo: "+Categoria.class.getName()));
     }
 
     public List<Categoria> findAll(){
