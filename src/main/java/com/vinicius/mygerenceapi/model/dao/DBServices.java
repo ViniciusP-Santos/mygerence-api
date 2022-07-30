@@ -17,8 +17,11 @@ public class DBServices {
     private ProdutoRepository produtoRepository;
 
     public void instanciaBD(){
-        Categoria cat1 = new Categoria(null, "Hardware", "Produtos fisicos");
+        Categoria cat1 = new Categoria(null, "Hardwares", "Produtos fisicos");
+        Categoria cat2 = new Categoria(null, "Softwares", "Produtos Logicos");
         Produto p1 = new Produto(null, "Mouse","Hoopson","Mouse USB",cat1);
+        Produto p2 = new Produto(null, "Teclado","Dell","Teclado Bluetooth",cat1);
+        Produto p3 = new Produto(null, "Photoshop","Adobe","Photoshop CC 2022",cat1);
 
         cat1.getProdutos().addAll(Arrays.asList(p1));
 
