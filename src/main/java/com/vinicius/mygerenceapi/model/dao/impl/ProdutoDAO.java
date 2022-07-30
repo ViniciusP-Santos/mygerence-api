@@ -24,7 +24,7 @@ public class ProdutoDAO {
     public Produto findById(Integer id){
         Optional<Produto> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException(
-                "Objeto não encontrado! ID: "+id+ " Tipo: "+Produto.class.getName()));
+                "Objeto não encontrado! ID: Produto"+id+ " Tipo: "+Produto.class.getName()));
     }
 
 
