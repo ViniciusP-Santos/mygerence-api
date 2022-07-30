@@ -21,7 +21,7 @@ public class DBServices {
         Categoria cat2 = new Categoria(null, "Softwares", "Produtos Logicos");
         Produto p1 = new Produto(null, "Mouse","Hoopson","Mouse USB",cat1);
         Produto p2 = new Produto(null, "Teclado","Dell","Teclado Bluetooth",cat1);
-        Produto p3 = new Produto(null, "Photoshop","Adobe","Photoshop CC 2022",cat1);
+        Produto p3 = new Produto(null, "Photoshop","Adobe","Photoshop CC 2022",cat2);
 
         cat1.getProdutos().addAll(Arrays.asList(p1));
 
