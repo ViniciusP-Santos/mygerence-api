@@ -29,5 +29,8 @@ public class DBServices {
         //Salvando todos os dados no banco de dados através do JPA Repository
         this.categoriaRepository.saveAll(Arrays.asList(cat1));
         this.produtoRepository.saveAll(Arrays.asList(p1));
+        this.categoriaRepository.saveAll(Arrays.asList(cat2));
+        this.produtoRepository.saveAll(Arrays.asList(p2));
+        this.produtoRepository.saveAll(Arrays.asList(p3));
     }
 }
