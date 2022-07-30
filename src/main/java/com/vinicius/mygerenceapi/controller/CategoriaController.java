@@ -22,7 +22,7 @@ public class CategoriaController {
     @Autowired
     private CategoriaDAO services;
 
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value="/{id}")
     public ResponseEntity<Categoria> findById(@PathVariable Integer id){
         Categoria obj = services.findById(id);
