@@ -2,6 +2,9 @@ package com.vinicius.mygerenceapi.model.dao;
 
 import com.vinicius.mygerenceapi.model.entity.Categoria;
 import com.vinicius.mygerenceapi.model.entity.Produto;
+import com.vinicius.mygerenceapi.model.entity.Role;
+import com.vinicius.mygerenceapi.model.entity.User;
+import com.vinicius.mygerenceapi.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.vinicius.mygerenceapi.repositories.CategoriaRepository;
@@ -15,6 +18,9 @@ public class DBServices {
     private CategoriaRepository categoriaRepository;
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public void instanciaBD(){
         Categoria cat1 = new Categoria(null, "Hardwares", "Produtos fisicos");
