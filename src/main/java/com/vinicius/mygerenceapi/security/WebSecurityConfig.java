@@ -18,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.config.annotation.CorsRegistration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -63,8 +64,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
   @Override
   public void addCorsMappings(CorsRegistry registry) {
     registry.addMapping("/**")
-            .allowedOrigins("http://localhost:4200/")
+            .allowedOrigins("*")
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
+  }
+
+
+  public void CorsMapping(CorsRegistration reg){
+    reg.allowedOrigins("http://localhost:4200/");
   }
   @Override
   protected void configure(HttpSecurity http) throws Exception {
