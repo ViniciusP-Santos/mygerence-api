@@ -29,7 +29,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
     // securedEnabled = true,
     // jsr250Enabled = true,
     prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
   
   @Value("${spring.h2.console.path}")
   private String h2ConsolePath;
@@ -61,20 +61,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
     return new BCryptPasswordEncoder();
   }
 
-  @Override
-  public void addCorsMappings(CorsRegistry registry) {
-    registry.addMapping("/**")
-            .allowedOrigins("http://localhost:4200/")
-            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
-  }
 
-
-  public void CorsMapping(CorsRegistration reg){
-    reg.allowedOrigins("http://localhost:4200/");
-  }
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.authorizeRequests().antMatchers("/").permitAll();
+    http.authorizeRequests().antMatchers("http://localhost:4200/").permitAll();
     http.cors().and().csrf().disable()
       .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
       .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
